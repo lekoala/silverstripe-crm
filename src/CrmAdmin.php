@@ -11,8 +11,6 @@ use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 /**
  * A simple CRM admin
  *
- * @link https://docs.silverstripe.org/en/5/developer_guides/customising_the_admin_interface/modeladmin/
- * @author LeKoala <thomas@lekoala.be>
  */
 class CrmAdmin extends ModelAdmin
 {

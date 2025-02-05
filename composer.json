@@ -20,6 +20,7 @@
     "require": {
         "php": ">=8.2",
         "silverstripe/framework": "^5.3",
+        "silverstripe/admin": "^5.3",
         "symbiote/silverstripe-gridfieldextensions": "^4.1",
         "lekoala/silverstripe-cms-actions": "^1.7",
         "lekoala/silverstripe-phonenumber": "*",

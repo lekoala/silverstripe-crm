@@ -14,7 +14,8 @@ use Symbiote\GridFieldExtensions\GridFieldAddExistingSearchButton;
 /**
  * Extension point for members that belongs to companies
  *
- * @author LeKoala <thomas@lekoala.be>
+ * @property \SilverStripe\Security\Member|\LeKoala\Crm\CompanyMember $owner
+ * @method \SilverStripe\ORM\ManyManyList<\LeKoala\Crm\Company> Companies()
  */
 class CompanyMember extends Extension
 {

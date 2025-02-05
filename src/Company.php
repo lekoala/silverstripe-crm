@@ -26,24 +26,32 @@ use Symbiote\GridFieldExtensions\GridFieldTitleHeader;
 /**
  * Describe a moral person
  *
- * @property string $Title
- * @property string $StreetAddress
- * @property string $StreetAddress2
- * @property string $PostalCode
- * @property string $Locality
- * @property string $CountryCode
- * @property string $PhoneNumber
- * @property string $FaxPhoneNumber
- * @property string $MobilePhoneNumber
- * @property string $Email
- * @property string $Website
- * @property string $ContactPerson
- * @property string $VatNumber
- * @property string $BankAccount
- * @property string $Bic
- * @property string $Notes
- *
- * @author LeKoala <thomas@lekoala.be>
+ * @property ?string $Title
+ * @property ?string $StreetAddress
+ * @property ?string $StreetAddress2
+ * @property ?string $PostalCode
+ * @property ?string $Locality
+ * @property ?string $CountryCode
+ * @property ?string $PhoneNumber
+ * @property ?string $MobilePhoneNumber
+ * @property ?string $Email
+ * @property ?string $Website
+ * @property ?string $ContactPerson
+ * @property ?string $VatNumber
+ * @property ?string $BankAccount
+ * @property ?string $Bic
+ * @property ?string $Notes
+ * @property ?string $ViesData
+ * @method \SilverStripe\ORM\DataList<\LeKoala\Invoice\Invoice> Invoices()
+ * @method \SilverStripe\ORM\DataList<\LeKoala\Invoice\Offer> Offers()
+ * @method \SilverStripe\ORM\DataList<\LeKoala\Invoice\Payment> Payments()
+ * @method \SilverStripe\ORM\ManyManyList<\SilverStripe\Security\Member> Persons()
+ * @mixin \LeKoala\Invoice\InvoiceCompany
+ * @mixin \SilverStripe\Assets\Shortcodes\FileLinkTracking
+ * @mixin \SilverStripe\Assets\AssetControlExtension
+ * @mixin \SilverStripe\CMS\Model\SiteTreeLinkTracking
+ * @mixin \SilverStripe\Versioned\RecursivePublishable
+ * @mixin \SilverStripe\Versioned\VersionedStateExtension
  */
 class Company extends DataObject
 {
@@ -185,7 +193,7 @@ class Company extends DataObject
 
     public function Country()
     {
-        return CountriesHelper::getNameFromCode($this->CountryCode);
+        return IntlHelper::getCountryNameFromCode($this->CountryCode);
     }
 
     public function FullAddress()
@@ -224,7 +232,7 @@ class Company extends DataObject
 
         // Fields replacements
         $fields->replaceField('CountryCode', $CountryCode = new DropdownField('CountryCode', 'Country'));
-        $CountryCode->setSource(CountriesHelper::get());
+        $CountryCode->setSource(IntlHelper::getCountries());
         $fields->replaceField('Email', new EmailField('Email', 'Email'));
 
         if (class_exists('LibPhoneNumberField')) {
