@@ -177,4 +177,50 @@ class VatHelper
 
         return $isValid;
     }
+
+    /**
+     * Get eas code for given vat number and country
+     * @link https://docs.peppol.eu/poacc/billing/3.0/codelist/eas/
+     * @param string $country
+     * @return string|null
+     */
+    public static function getEasCode(string $country): ?string
+    {
+        return match ($country) {
+            'AD' => "9922",
+            'AL' => "9923",
+            'BA' => "9924",
+            'BE' => "9925",
+            'BG' => "9926",
+            'CH' => "9927",
+            'CY' => "9928",
+            'CZ' => "9929",
+            'DE' => "9930",
+            'ES' => "9931",
+            'UK' => "9932",
+            'GR' => "9933",
+            'HR' => "9934",
+            'IE' => "9935",
+            'LI' => "9936",
+            'LT' => "9937",
+            'LU' => "9938",
+            'LA' => "9939",
+            'MC' => "9940",
+            'ME' => "9941",
+            'MK' => "9942",
+            'MT' => "9943",
+            'NL' => "9944",
+            'PL' => "9945",
+            'PT' => "9946",
+            'RO' => "9947",
+            'RS' => "9948",
+            'SI' => "9949",
+            'SK' => "9950",
+            'SM' => "9951",
+            'TR' => "9952",
+            'VA' => "9953",
+            'FR' => "9957",
+            default => null
+        };
+    }
 }

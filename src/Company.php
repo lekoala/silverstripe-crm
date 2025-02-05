@@ -196,6 +196,15 @@ class Company extends DataObject
         return IntlHelper::getCountryNameFromCode($this->CountryCode);
     }
 
+    /**
+     * This expects a format like My street, 111, something. , are optionals
+     * @return array{street:string,num:string}
+     */
+    public function SplitStreetAddress()
+    {
+        return AddressHelper::splitAddress($this->StreetAddress);
+    }
+
     public function FullAddress()
     {
         $html = $this->StreetAddress . '<br/>';
