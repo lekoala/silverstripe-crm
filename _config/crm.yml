@@ -1,0 +1,13 @@
+---
+Name: crm
+---
+SilverStripe\Security\Member:
+  extensions:
+    - LeKoala\Crm\CompanyMember
+---
+Only:
+  classexists: "LeKoala\PhoneNumber\PhoneNumberExtension"
+---
+SilverStripe\Security\Member:
+  extensions:
+    - "LeKoala\PhoneNumber\PhoneNumberExtension"
